@@ -1,0 +1,45 @@
+.wrapper {
+    width: 100%;
+    background-color: #202c33;
+    border-right: 1px solid #303a40;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .section {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding: 25px;
+        box-sizing: border-box;
+        font-size: 25px;
+        color: #aebac1;
+        cursor: pointer;
+
+        .avatar {
+            background-color: #87d068;
+        }
+
+        .link {
+            background-color: transparent;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: .2s all;
+        }
+
+        .active {
+            background-color: #374248;
+
+            transition: .2s all;
+        }
+    }
+}

@@ -1,0 +1,302 @@
+.wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    height: 100%;
+
+    .contacts {
+        background-color: #111b21;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        height: calc(100vh - 30px);
+
+        .contactList {
+            width: 100%;
+            overflow: auto;
+            min-height: 0;
+            max-height: 100%;
+
+            .notFound {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: rgba(255,255,255,0.1);
+                font-size: 22px;
+
+                .text {
+                    color: rgba(255,255,255,0.2);
+                    margin-top: 5px;
+                }
+            }
+
+            .content {
+                display: flex;
+                flex-direction: column;
+
+                .contact {
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 10px;
+                    background-color: transparent;
+                    cursor: pointer;
+                    align-items: center;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    gap: 10px;
+                    position: relative;
+
+                    transition: .25s all;
+
+                    &:hover {
+                        background-color: rgba(255,255,255,0.055);
+
+                        transition: .25s all;
+                    }
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        width: calc(100% - 64px);
+                        background-color: rgba(255, 255, 255, 0.06);
+                        height: .65px;
+                        bottom: 0;
+                        right: 0;
+                    }
+
+                    .contactInformation {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+
+                        .message {
+                            .text {
+                                font-size: 12px;
+                                color: rgba(255,255,255,0.65);
+                                margin: 0;
+                            }
+                        }
+
+                        .informationTop {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .phoneText {
+                                color: rgba(255,255,255,0.95);
+                                font-weight: bold;
+                                margin: 0;
+                            }
+
+                            .timeText {
+                                font-size: 12px;
+                                color: rgba(255,255,255,0.75);
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+
+                .activeChat {
+                    background-color: rgba(255,255,255,0.055);
+
+                    transition: .25s all;
+                }
+            }
+        }
+
+        .header {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+
+            .filter {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                box-sizing: border-box;
+                padding: 5px 0 0;
+
+                .title {
+                    cursor: pointer;
+                    background-color: #202c33;
+                    border-radius: 42px;
+                    color: #6d7c84;
+                    padding: 8px 15px;
+                    font-size: 14px;
+
+                    transition: .2s all;
+                }
+
+                .active {
+                    background-color: #0a332c;
+                    color: #00a884;
+
+                    transition: .2s all;
+                }
+            }
+
+            .menu {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 0 20px;
+
+                .title {
+
+                    .text {
+                        color: #eee;
+                        font-size: 25px;
+                        margin: 0;
+                    }
+                }
+
+                .buttons {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 15px;
+                    color: #eee;
+                    cursor: pointer;
+                    font-size: 22px;
+                }
+            }
+
+            .inputSearch {
+                background-color: #202C33;
+                outline: none;
+                border: none;
+                color: #eee;
+                height: 35px;
+
+                input::placeholder {
+                    color: rgba(179, 179, 179, 0.25);
+                }
+            }
+
+        }
+    }
+
+    .messages {
+        background-color: #222e35;
+
+        .chatWrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: url('/bg-chat.png');
+                width: 100%;
+                height: 100%;
+                opacity: .1;
+                z-index: 1;
+            }
+
+            .content {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                z-index: 10;
+                display: grid;
+                grid-template-rows: auto 1fr auto;
+
+                .messageListWrapper {
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0,0,0,0.4);
+                    box-sizing: border-box;
+                    padding: 10px;
+
+                    .virtWrapper {
+
+                        .messageWrapper {
+                            width: auto;
+                            box-sizing: border-box;
+                            padding: 10px;
+                            border-radius: 7px;
+                            margin: 3px 0;
+                        }
+                    }
+
+                }
+
+                .header {
+                    width: 100%;
+                    background-color: #202c33;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-content: center;
+                    padding: 10px;
+                    box-sizing: border-box;
+
+                    .buttons {
+                        display: flex;
+                        flex-direction: row;
+                        gap:  10px;
+
+                        .button {
+                            color:rgba(255,255,255,0.55);
+                            cursor: pointer;
+                            font-size: 25px;
+                        }
+                    }
+
+                    .contactAvatar {
+                        cursor: pointer;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 10px;
+
+                        .text {
+                            margin: 0;
+                        }
+                    }
+                    
+                }
+
+                .inputContent {
+                    width: 100%;
+                    padding: 10px;
+                    background-color: #202c33;
+                    box-sizing: border-box;
+
+                    .input {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .notFound {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: rgba(255,255,255,0.1);
+            font-size: 72px;
+            text-align: center;
+
+            .text {
+                color: rgba(255,255,255,0.2);
+                margin-top: 15px;
+            }
+        }
+    }
+}
