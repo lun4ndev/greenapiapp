@@ -1,0 +1,51 @@
+name: Deploy static content to Pages
+
+on:
+  # Запускать при пуше в ветку main
+  push:
+    branches: ["main"]
+
+  # Разрешить запуск вручную из вкладки Actions
+  workflow_dispatch:
+
+# Установка прав для GITHUB_TOKEN
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Ограничение на одновременный деплой
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Сборка и деплой
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20  # Укажите нужную версию Node.js
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build  # Команда для сборки проекта (например, создание папки dist)
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist  # Указываем папку dist как артефакт для деплоя
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
